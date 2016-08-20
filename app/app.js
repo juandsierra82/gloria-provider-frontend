@@ -13,6 +13,14 @@ App = Ember.Application.extend({
   Resolver
 });
 
+Ember.run.backburner.DEBUG            = true;
+Ember.ENV.RAISE_ON_DEPRECATION        = true;
+Ember.LOG_STACKTRACE_ON_DEPRECATION   = true;
+Ember.LOG_BINDINGS                    = true;
+Ember.RSVP.on('error', function(error) {
+  Ember.Logger.assert(false, error);
+});
+
 loadInitializers(App, config.modulePrefix);
 
 export default App;
